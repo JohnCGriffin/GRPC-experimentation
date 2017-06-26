@@ -50,8 +50,9 @@ Finally, a sample application requests a slowly updating and filtered stream fro
 2. To terminate a long incoming stream from a client, use TryCancel().
 3. Even if an RPC service takes something simple like a number, or even nothing at all, you need a proto message 
     for it.  Notice that ``ConnectFirehose`` requires an empty VoidMessage.
-4. The generated GO code is more lucid than the C++, but runs 50% slower than C++.
-5. For emacs, ``(add-to-list 'auto-mode-alist '("\\.proto" . c-mode))``.  Of course, you shouldn't be editing proto files that often.
+4. The generated GO code is more lucid than the C++.
+5. For emacs, ``(add-to-list 'auto-mode-alist '("\\.proto" . c-mode))``.  Of course, one shouldn't edit proto files that often.
+6. There would be utility in modifying the language-specific plugins in the proto compiler to generate skeleton client and server implementations.
     
 ### Still Baffled
 
