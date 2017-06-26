@@ -1,0 +1,32 @@
+
+syntax = "proto3";
+
+package marketfeed;
+
+message Trade {
+  string ticker = 1;
+  int64 timestamp = 2;
+  double price = 3;
+  int64 transaction = 4;
+  double open = 5;
+  sint32 direction = 6; // -1, 0, 1
+}
+
+message VoidMessage {}
+
+message FilterRequest {
+  int64 delay = 1;
+  repeated string tickers = 2;
+}
+
+
+service TickerSource {
+  rpc ConnectFirehose (VoidMessage) returns (stream Trade){}
+  
+}
+
+service ApplicationTickerSource {
+  rpc FilteredStream (FilterRequest) returns (stream Trade){}
+}
+
+
