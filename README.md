@@ -44,9 +44,17 @@ While the firehose supports multiple clients, only one really connects.  The mid
 
 Finally, a sample application request a slowly updating and filtered stream from the GO process via GRPC.  In this case, it's a C++ application using ncurses.
 
-# Easy?
+### Learned
 
-Honestly, yes and no.  It's easy after it's done.  Hopefully somebody will benefit from the example.
+1. In C++, compile the generated .cc files and throw them away and just keep the headers.
+2. To terminate a long incoming stream from a client, use TryCancel().
+3. Even if an RPC service takes something simple like a number, or even nothing at all, you need a proto message 
+    for it.  Notice that ``ConnectHirehose`` requires an empty VoidMessage.
+    
+### Still Baffled
+
+1. Should I be using version 2 or 3?  I choose 3.
+2. The GO implementation of GRPC seems to be disconnected from the other supported languages and the generate code indicates that it's using Version 2 protocol buffers, even with 3 specified.  It works nonetheless.
 
 
 
