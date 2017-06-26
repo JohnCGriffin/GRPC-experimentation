@@ -51,6 +51,7 @@ Finally, a sample application requests a slowly updating and filtered stream fro
 3. Even if an RPC service takes something simple like a number, or even nothing at all, you need a proto message 
     for it.  Notice that ``ConnectFirehose`` requires an empty VoidMessage.
 4. The generated GO code is more lucid than the C++, but runs 50% slower than C++.
+5. For emacs, ``(add-to-list 'auto-mode-alist '("\\.proto" . c-mode))``.  Perhaps there is a good mode, but this seems fine.
     
 ### Still Baffled
 
