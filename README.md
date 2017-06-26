@@ -42,14 +42,14 @@ service ApplicationTickerSource {
 
 While the firehose supports multiple clients, only one really connects.  The middle piece is a GO program that reads the firehose via GRPC stream in a GO routine, updating a map of ticker information.  It also is a server for clients that want throttled and coalesced trades, filtered by only those tickers given in request.  That service is also via GRPC streams. That service is shown above as ``ApplicationTickerSource``.
 
-Finally, a sample application request a slowly updating and filtered stream from the GO process via GRPC.  In this case, it's a C++ application using ncurses.
+Finally, a sample application requests a slowly updating and filtered stream from the GO process via GRPC.  In this case, it's a C++ application using ncurses.
 
 ### Learned
 
 1. In C++, compile the generated .cc files and throw them away; just keep headers.
 2. To terminate a long incoming stream from a client, use TryCancel().
 3. Even if an RPC service takes something simple like a number, or even nothing at all, you need a proto message 
-    for it.  Notice that ``ConnectHirehose`` requires an empty VoidMessage.
+    for it.  Notice that ``ConnectFirehose`` requires an empty VoidMessage.
 4. The generated GO code is more lucid than the C++, but runs 50% slower than C++.
     
 ### Still Baffled
